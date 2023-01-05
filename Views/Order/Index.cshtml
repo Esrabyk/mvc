@@ -1,0 +1,43 @@
+﻿@model IEnumerable<YazilimTest.Models.TeachersViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>OrderID</th>
+            <th>CustomerId</th>
+            <th>PRoduct</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                    @Html.DisplayFor(modelItem => item.order.OrderId)
+                    
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.customer.CustomerName)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.product.ProductName)
+
+                </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.order.OrderId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.order.OrderId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.order.OrderId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
